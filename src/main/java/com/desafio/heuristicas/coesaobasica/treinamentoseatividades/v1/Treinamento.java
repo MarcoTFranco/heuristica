@@ -21,6 +21,8 @@ public class Treinamento {
          */
 
         testeDeFogo.addTitulosAtividades("Ta feito");
+        testeDeFogo.addTitulosAtividades("Ta feito2");
+        testeDeFogo.addTitulosAtividades("Ta feito3");
 
         /*
          * Uma vez que você implementou a adição de titulos de atividades,
@@ -28,20 +30,21 @@ public class Treinamento {
          * da atividade dentro do treinamento.
          */
 
-        int posicao = testeDeFogo.verificaPosicao("Ta feito");
+        System.out.println(testeDeFogo.verificaPosicao("Ta feito3"));
+
     }
 
     public void addTitulosAtividades(String titulo) {
         this.titulosAtividades.add(titulo);
     }
 
-    public int verificaPosicao(String titulo) {
+    public Integer verificaPosicao(String titulo) {
         for (int i = 0; i<titulosAtividades.size(); i++) {
             if (titulosAtividades.get(i).equals(titulo)) {
                 return i;
             }
         }
-        return -1;
+        return null;
     }
 
 
