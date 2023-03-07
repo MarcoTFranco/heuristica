@@ -15,7 +15,7 @@ public class CriaClienteController {
 		 * facilitar a vida de quem vai usar essa classe?	
 		 */
 
-		clienteService.cpfFormatado(cpf);
+		clienteService.cpfSemPontuacao(cpf);
 
 		new Cliente(cpf);
 	}

@@ -25,7 +25,7 @@ public class ExibeCpfController {
          * Como você sabe se o cpf está na formataçÃo que você precisa aqui?
          */
 
-        clienteService.cpfFormatado(cliente.getCpf());
+        clienteService.cpfSemPontuacao(cliente.getCpf());
 
         return cliente.getCpf();
     }
