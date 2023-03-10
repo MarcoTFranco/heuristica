@@ -14,7 +14,7 @@ public class Treinamento {
     public Treinamento(String titulo, List<SecaoAtividades> secoes) {
         super();
         this.titulo = titulo;
-        secoes.forEach(this.secoes::add);
+        this.secoes.addAll(secoes);
     }
 
     public static void main(String[] args) {
@@ -50,23 +50,14 @@ public class Treinamento {
     }
 
     public int calculaQuantidadeAtividadesObrigatorias() {
-        return this.secoes.stream()
-                .mapToInt(SecaoAtividades::quantidadeAtividadesObrigatorias)
-                .sum();
+        return TodasAtividades.quantidadeAtividadesObrigatorias(secoes);
     }
 
     public int calculaQuantasObrigatoriasForamFinalizadas(Aluno aluno) {
-        return (int) this.secoes.stream()
-                .flatMap(secaoAtividades -> secaoAtividades.respostasDeterminadoAluno(aluno).stream())
-                .filter(Resposta::eObrigatoria)
-                .count();
+        return TodasAtividades.quantasObrigatoriasForamFinalizadas(secoes, aluno);
     }
 
     public BigDecimal calculaPercentualDeAtividadesObrigatorias() {
-        int obrigatorias = calculaQuantidadeAtividadesObrigatorias();
-        int quantidadeAtividades = this.secoes.stream()
-                .mapToInt(SecaoAtividades::totalAtividades)
-                .sum();
-        return BigDecimal.valueOf((obrigatorias * 100L) / quantidadeAtividades);
+        return TodasAtividades.percentualDeAtividadesObrigatorias(secoes);
     }
 }
